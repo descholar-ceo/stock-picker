@@ -4,11 +4,8 @@
 
 This is project is the implementation of the project found on theodinproject on this link: [theodinproject](https://www.theodinproject.com/courses/ruby-programming/lessons/stock-picker)
 
-## Description of stock-picker
 
-**stock-picker** (American English), **noughts and crosses** (British English), or **Xs and Os** is a [paper-and-pencil](https://en.wikipedia.org/wiki/Paper-and-pencil_stoc) stoc for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. [Read more on wikipedia...](https://en.wikipedia.org/wiki/stock-picker)
-
-**This project is the implementation of that stock-picker, which is run on CLI (Command Line Interface), anyone can play it.**
+**This project is the implementation of that stock-picker, which is run on CLI (Command Line Interface), anyone can use it.**
 
 |        stoc Board          |
 -----------------------------|

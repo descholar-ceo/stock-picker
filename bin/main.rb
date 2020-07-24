@@ -18,7 +18,7 @@ class StockPicker
   end
 
   def user_enters_prices
-    puts "\nEnter the set of your prices written in this way [100, 200, 500]:"
+    puts "\nEnter the set of your prices written in this way [100, 200, 500]: "
     @stock_prices = gets.chomp
   end
 

@@ -22,7 +22,7 @@ class StockPicker
         @stock_prices = gets.chomp
     end
 
-    def analyze_stop_prices
+    def analyze_stock_prices
         
     end
 

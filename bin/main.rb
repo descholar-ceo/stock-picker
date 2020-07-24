@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
-
+require './lib/messages'
 require './lib/stock'
 
-class StockPicker
+class StockPicker < Stock
   def initialize
     @stock_prices = []
   end
 
   def start
-    puts 'Hello there, welcome to the STOCKPICKER software, this software helps you identify which day is best to sell
-        and which day is best to buy!'
+    puts Messages::STOCKPICKER_LOGO
+    puts Messages::WELCOME_MESSAGE
     return unless continue?
 
     interested = true
@@ -22,20 +22,18 @@ class StockPicker
   end
 
   def user_enters_prices
-    puts "\nEnter the set of your prices written in this way 100, 200, 500: "
+    puts Messages::ENTER_SET_OF_DAY_PRICES
     user_inputs = gets.chomp.split(',')
     user_inputs.each { |current| @stock_prices << current.to_i }
   end
 
   def show_results
-    stock = Stock.new
-    puts "\nA good day to buy is the #{stock.analyze_stock_prices(@stock_prices)[0] + 1}th day"
-    puts "A good day to sell is the #{stock.analyze_stock_prices(@stock_prices)[1] + 1}th day"
+    puts "\nA good day to buy is the #{analyze_stock_prices(@stock_prices)[0] + 1}th day"
+    puts "A good day to sell is the #{analyze_stock_prices(@stock_prices)[1] + 1}th day"
   end
 
   def continue?
-    puts "\nDo you want to continue? If you want to continue enter y otherwise enter any other key
-    to terminate the STOCKPICKER!"
+    puts Messages::WANT_CONTINUE
     continue_value = gets.chomp.downcase
     return true if continue_value == 'y'
 

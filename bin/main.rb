@@ -18,8 +18,9 @@ class StockPicker
   end
 
   def user_enters_prices
-    puts "\nEnter the set of your prices written in this way [100, 200, 500]: "
-    @stock_prices = gets.chomp
+    puts "\nEnter the set of your prices written in this way 100, 200, 500: "
+    user_inputs = gets.chomp.split(",")
+    user_inputs.each { |current| @stock_prices << current }
   end
 
   def analyze_stock_prices
@@ -48,7 +49,7 @@ class StockPicker
   end
 
   def show_results
-    puts @stock_prices
+    puts @stock_prices.class
   end
 
   def continue?

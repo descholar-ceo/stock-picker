@@ -39,7 +39,7 @@ class StockPicker
             if the difference is positive
                     add current element to the days array
                     add the next element to the days array
-                    add the differnce result as key and days array as value on the
+                    add the differnce result as value and days array as key on the
             else
                 next
             end if
@@ -48,9 +48,7 @@ class StockPicker
     end each
 
     # analyze the hash
-    on each pair of the hash
-        if k
-    end each
+    return the pair which has the max value
 =end
   end
 

@@ -14,6 +14,7 @@ class StockPicker
 
     interested = true
     while interested
+      @stock_prices=[]
       user_enters_prices
       show_results
       interested = false unless continue?

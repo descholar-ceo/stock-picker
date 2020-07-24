@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+
+require './lib/stock'
+
 class StockPicker
   def initialize
     @stock_prices = []
@@ -20,11 +23,12 @@ class StockPicker
   def user_enters_prices
     puts "\nEnter the set of your prices written in this way 100, 200, 500: "
     user_inputs = gets.chomp.split(',')
-    user_inputs.each { |current| @stock_prices << current }
+    user_inputs.each { |current| @stock_prices << current.to_i }
   end
 
   def show_results
-    puts @stock_prices.class
+    stock = Stock.new
+    puts stock.analyze_stock_prices(@stock_prices)
   end
 
   def continue?

@@ -6,16 +6,16 @@ class Stock
     results_hash = {}
     stock_prices_arr.each do |current_element|
       i = 1
-      while i < stock_length - (stock_prices_arr.find_index(current_element)) do
+      while i < stock_length - stock_prices_arr.find_index(current_element)
         difference = stock_prices_arr[-i] - current_element
-        if difference > 0
-            days_arr = [stock_prices_arr.find_index(current_element), stock_prices_arr.find_index(stock_prices_arr[-i])]
-            results_hash[days_arr] = difference
+        if difference.positive?
+          days_arr = [stock_prices_arr.find_index(current_element), stock_prices_arr.find_index(stock_prices_arr[-i])]
+          results_hash[days_arr] = difference
         end
         i += 1
       end
     end
-    res = results_hash.max_by { |k,v| v }
-    return res[0]
+    res = results_hash.max_by { |_k, v| v }
+    res[0]
   end
 end

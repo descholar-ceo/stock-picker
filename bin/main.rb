@@ -14,7 +14,7 @@ class StockPicker
 
     interested = true
     while interested
-      @stock_prices=[]
+      @stock_prices = []
       user_enters_prices
       show_results
       interested = false unless continue?
@@ -29,12 +29,13 @@ class StockPicker
 
   def show_results
     stock = Stock.new
-    puts stock.analyze_stock_prices(@stock_prices)
+    puts "\nA good day to buy is the #{stock.analyze_stock_prices(@stock_prices)[0] + 1}th day"
+    puts "A good day to sell is the #{stock.analyze_stock_prices(@stock_prices)[1] + 1}th day"
   end
 
   def continue?
-    puts 'Do you want to continue? If you want to continue enter y otherwise enter any other key
-    to terminate the STOCKPICKER!'
+    puts "\nDo you want to continue? If you want to continue enter y otherwise enter any other key
+    to terminate the STOCKPICKER!"
     continue_value = gets.chomp.downcase
     return true if continue_value == 'y'
 

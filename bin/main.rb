@@ -1,16 +1,20 @@
 #!/usr/bin/env ruby
-class StockPicker
+require './lib/messages'
+require './lib/stock'
+
+class StockPicker < Stock
   def initialize
     @stock_prices = []
   end
 
   def start
-    puts 'Hello there, welcome to the STOCKPICKER software, this software helps you identify which day is best to sell
-        and which day is best to buy!'
+    puts Messages::STOCKPICKER_LOGO
+    puts Messages::WELCOME_MESSAGE
     return unless continue?
 
     interested = true
     while interested
+      @stock_prices = []
       user_enters_prices
       show_results
       interested = false unless continue?
@@ -18,42 +22,18 @@ class StockPicker
   end
 
   def user_enters_prices
-    puts "\nEnter the set of your prices written in this way [100, 200, 500]: "
-    @stock_prices = gets.chomp
-  end
-
-  def analyze_stock_prices
-    #
-    #     get the array
-    #     create a hash result to compare
-    #     create days array=[]
-    #
-    #     # analyze the array
-    #     on each element do
-    #         i = 0
-    #         while i<array.length-index of current element-1
-    #             if the difference is positive
-    #                     add current element to the days array
-    #                     add the next element to the days array
-    #                     add the differnce result as value and days array as key on the
-    #             else
-    #                 next
-    #             end if
-    #             i++
-    #         end while
-    #     end each
-    #
-    #     # analyze the hash
-    #     return the pair which has the max value
+    puts Messages::ENTER_SET_OF_DAY_PRICES
+    user_inputs = gets.chomp.split(',')
+    user_inputs.each { |current| @stock_prices << current.to_i }
   end
 
   def show_results
-    puts @stock_prices
+    puts "\nA good day to buy is the #{analyze_stock_prices(@stock_prices)[0] + 1}th day"
+    puts "A good day to sell is the #{analyze_stock_prices(@stock_prices)[1] + 1}th day"
   end
 
   def continue?
-    puts 'Do you want to continue? If you want to continue enter y otherwise enter any other key
-    to terminate the STOCKPICKER!'
+    puts Messages::WANT_CONTINUE
     continue_value = gets.chomp.downcase
     return true if continue_value == 'y'
 

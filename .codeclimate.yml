@@ -2,3 +2,5 @@ version: "2"
 plugins:
   rubocop:
     enabled: true
+    config:
+      file: ".rubocop.yml"
